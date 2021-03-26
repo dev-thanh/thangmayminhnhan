@@ -258,7 +258,7 @@ class IndexController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'type' => $request->type,
+            'title' => $request->title,
             'content' => $request->content,
             'url' => route('contact.edit', $contact->id),
         ]; 

@@ -347,6 +347,7 @@
                         <p>Có khách hàng vừa gửi đăng ký tư vấn với thông tin như sau,</p>
                         <p><span class="with">Tên khách hàng: </span> <b>{{ @$name }}</b></p>
                         <p><span class="with">Số điện thoại: </span> <b>{{ @$phone }}</b></p>
+                        <p><span class="with">Tiêu đề: </span> <b>{{ @$title }}</b></p>
                         <p><span class="with">Nội dung cần tư vấn: </span> <b>{{ @$advisory_content }}</b></p>
                         
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" 
@@ -373,20 +374,7 @@
 </tr>
 
 </table>
-<div class="footer">
-  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <td class="content-block">
-        <span class="apple-link">NCT3</span>
-    </td>
-</tr>
-<tr>
-  <td class="content-block powered-by">
-    GCO - TEAM
-</td>
-</tr>
-</table>
-</div>
+
 </div>
 </td>
 <td>&nbsp;</td>
