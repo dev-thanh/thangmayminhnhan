@@ -231,11 +231,8 @@ class IndexController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
         ];
-
-        
         
         $result['success'] = 'Gửi thông tin thành công, chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất. Xin cảm ơn !';
-        
 
         $customer = Customer::create($data);
 
@@ -258,7 +255,6 @@ class IndexController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'title' => $request->title,
             'content' => $request->content,
             'url' => route('contact.edit', $contact->id),
         ]; 
