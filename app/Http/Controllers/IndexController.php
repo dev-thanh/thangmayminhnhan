@@ -35,7 +35,7 @@ use App\Models\Customer;
 
 class IndexController extends Controller
 {
-	public $config_info;
+    public $config_info;
 
     public function __construct()
     {
@@ -112,13 +112,13 @@ class IndexController extends Controller
     { 
         $contentHome = Pages::where('type', 'home')->first();
 
-    	$this->createSeo($contentHome);
+        $this->createSeo($contentHome);
 
         $products_show = Products::where('status',1)->where('show_home', 1)->take(9)->get();
 
         $blogs = Posts::where('status', 1)->where('show_home',1)->orderBy('created_at','DESC')->take(5)->get();
 
-    	return view('frontend.pages.home', compact('contentHome', 'products_show', 'blogs'));
+        return view('frontend.pages.home', compact('contentHome', 'products_show', 'blogs'));
     }
 
     public function getListAbout(){
@@ -254,7 +254,7 @@ class IndexController extends Controller
         $contact->save();
 
         $content_email = [
-            'title' => $title,
+            'title' => $request->title,
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
@@ -265,11 +265,11 @@ class IndexController extends Controller
 
         $email_admin = getOptions('general', 'email_admin');
 
-        Mail::send('frontend.mail.mail-teamplate', $content_email, function ($msg) use($email_admin,$title) {
+        Mail::send('frontend.mail.mail-teamplate', $content_email, function ($msg) use($email_admin) {
 
-            $msg->from(config('mail.mail_from'), 'Website - Xe đạp điện Phong Lý');
+            $msg->from(config('mail.mail_from'), 'Website - Thang máy Minh Nhân');
 
-            $msg->to($email_admin, 'Website - Xe đạp điện Phong Lý')->subject($title);
+            $msg->to($email_admin, 'Website - Thang máy Minh Nhân')->subject('Liên hệ từ khách hàng');
 
         });
         

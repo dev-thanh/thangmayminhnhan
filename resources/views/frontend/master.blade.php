@@ -29,6 +29,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ __BASE_URL__ }}/css/main.min.css" />
 		<link rel="stylesheet" type="text/css" href="{{ __BASE_URL__ }}/css/page.min.css" />
 		<link rel="stylesheet" type="text/css" href="{{ __BASE_URL__ }}/css/responsive.min.css" />
+		<link rel="stylesheet" type="text/css" href="{{ __BASE_URL__ }}/css/toastr.min.css" />
 		<link rel="stylesheet" type="text/css" href="{{ __BASE_URL__ }}/css/tdt.css" />
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -149,8 +150,8 @@
 			@include('frontend.teamplate.footer')
 
 		<script src="{{ __BASE_URL__ }}/js/tool.min.js"></script>
+		
 		<script defer src="{{ __BASE_URL__ }}/js/main.js"></script> 
-
 
 		<script type="text/javascript" src="{{ __BASE_URL__ }}/js/toastr.min.js"></script>
 

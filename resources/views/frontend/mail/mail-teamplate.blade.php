@@ -348,7 +348,7 @@
                         <p><span class="with">Tên khách hàng: </span> <b>{{ @$name }}</b></p>
                         <p><span class="with">Số điện thoại: </span> <b>{{ @$phone }}</b></p>
                         <p><span class="with">Tiêu đề: </span> <b>{{ @$title }}</b></p>
-                        <p><span class="with">Nội dung cần tư vấn: </span> <b>{{ @$advisory_content }}</b></p>
+                        <p><span class="with">Nội dung cần tư vấn: </span> <b>{{ @$content }}</b></p>
                         
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" 
                         class="btn btn-primary">
