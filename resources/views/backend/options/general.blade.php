@@ -125,6 +125,12 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="form-group">
+											<label for="">Facebook chat</label>
+											<textarea name="content[facebook_chat]" class="form-control" rows="10">{!! @$content->facebook_chat !!}</textarea>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group">
 											<label for="">Ticktok</label>
 										 <input type="text" name="content[ticktok]" class="form-control" value="{!! @$content->ticktok !!}">
 										</div>
@@ -147,12 +153,7 @@
 											<input type="text" name="content[facebook_pixel]" class="form-control" value="{!! @$content->facebook_pixel !!}">
 										</div>
 									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label for="">Facebook chat</label>
-											<input type="text" name="content[facebook_chat]" class="form-control" value="{!! @$content->facebook_chat !!}">
-										</div>
-									</div>
+									
 			               		</div>
 
 			               		<div class="row">

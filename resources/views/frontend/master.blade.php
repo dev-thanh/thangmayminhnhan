@@ -109,48 +109,29 @@
 		<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ @$site_info->facebook_pixel }}&ev=PageView&noscript=1"/></noscript>
 
 		@if (!empty($site_info->facebook_chat))
-			<!-- Load Facebook SDK for JavaScript -->
-			<div id="fb-root"></div>
-			<script>
-			window.fbAsyncInit = function() {
-				FB.init({
-				xfbml            : true,
-				version          : 'v8.0'
-				});
-			};
-
-			(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-			fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-
-			<div class="fb-customerchat" attribution=setup_tool page_id="{{@$site_info->facebook_chat}}" logged_in_greeting="{{trans('message.xin_chao_chung_toi_co_the_giup_gi_cho_ban')}}" logged_out_greeting="{{trans('message.xin_chao_chung_toi_co_the_giup_gi_cho_ban')}}">
-	    </div>
+			{!! $site_info->facebook_chat !!}
 		@endif
-			<input type="hidden" name="base_url" value="{{url('/')}}">
-			<div class="loadingcover" style="display: none;">
-				<p class="csslder">
-					<span class="csswrap">
-						<span class="cssdot"></span>
-						<span class="cssdot"></span>
-						<span class="cssdot"></span>
-					</span>
-				</p>
-			</div>
+		<input type="hidden" name="base_url" value="{{url('/')}}">
+		<div class="loadingcover" style="display: none;">
+			<p class="csslder">
+				<span class="csswrap">
+					<span class="cssdot"></span>
+					<span class="cssdot"></span>
+					<span class="cssdot"></span>
+				</span>
+			</p>
+		</div>
 
-			<h1 class="h1_seo d-none" style="display: none">Xe đạp điện phong lý</h1>
+		<h1 class="h1_seo d-none" style="display: none">Thang máy Minh Nhân</h1>
 
-			@include('frontend.teamplate.header')
-				
-				@yield('main')
+		@include('frontend.teamplate.header')
+			
+			@yield('main')
 
-			@include('frontend.teamplate.footer')
+		@include('frontend.teamplate.footer')
 
 		<script src="{{ __BASE_URL__ }}/js/tool.min.js"></script>
-		
+
 		<script defer src="{{ __BASE_URL__ }}/js/main.js"></script> 
 
 		<script type="text/javascript" src="{{ __BASE_URL__ }}/js/toastr.min.js"></script>
