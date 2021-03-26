@@ -46,6 +46,7 @@
 	                    </div>
 	                    @endif
 	                </div>
+	                @if(count($post_same_category))
 	                <div class="detailRe">
 	                    <h3 class="title color--red pl-0">Tin tức liên Quan</h3>
 	                    <div class="detailRe__content">
@@ -81,6 +82,7 @@
 	                        </div>
 	                    </div>
 	                </div>
+	                @endif
 	            </div>
 	        </div>
 	    </section>
