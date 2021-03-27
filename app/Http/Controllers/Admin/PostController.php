@@ -81,7 +81,12 @@ class PostController extends Controller
                     } else {
                         $status = ' <span class="label label-danger">Không hiển thị</span>';
                     }
-                    return $status;
+                    if ($data->show_home == 1) {
+                        $show_home = '<br><span class="label label-success">Hiển thị trang chủ</span>';
+                    }else{
+                        $show_home = '';
+                    }
+                    return $status.$show_home;
                 })->addColumn('action', function ($data) {
                     return '<a href="' . route('posts.edit', ['id' => $data->id ]) . '" title="Sửa">
                             <i class="fa fa-pencil fa-fw"></i> Sửa
@@ -128,7 +133,7 @@ class PostController extends Controller
         
         $input['status'] = $request->status == 1 ? 1 : null;
 
-        $input['show_home'] = $request->status == 1 ? 1 : null;
+        $input['show_home'] = $request->show_home == 1 ? 1 : null;
 
         $input['is_new'] = $request->is_new == 1 ? 1 : null;
 
