@@ -47,22 +47,6 @@
 
 						                            <div class="col-sm-12">
 
-						                            	<div class="form-group">
-															<div class="form-group">
-									                           <label>Icon đại diện</label>
-									                           <div class="image">
-									                               <div class="image__thumbnail">
-									                                   <img src="{{ @$data->image ?  url('/').$data->image : __IMAGE_DEFAULT__ }}"  
-									                                   data-init="{{ __IMAGE_DEFAULT__ }}">
-									                                   <a href="javascript:void(0)" class="image__delete" onclick="urlFileDelete(this)">
-									                                    <i class="fa fa-times"></i></a>
-									                                   <input type="hidden" value="{{ @$data->image }}" name="image"  />
-									                                   <div class="image__button" onclick="fileSelect(this)"><i class="fa fa-upload"></i> Upload</div>
-									                               </div>
-									                           </div>
-									                       </div>
-														</div>
-
 						                                <div class="form-group">
 
 						                                    <label>Tiêu đề</label>
