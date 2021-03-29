@@ -45,8 +45,8 @@
 	                                <select class="form-control" id="filter" name="sap-xep">
 	                                    <option value="moi-nhat" @if($sort=='moi-nhat') selected @endif>Mới nhất</option>
 										<option value="cu-nhat" @if($sort=='cu-nhat') selected @endif>Cũ nhất</option>
-										<option value="a-z" @if($sort=='a-z') selected @endif>A-Z</option>
-										<option value="z-a" @if($sort=='z-a') selected @endif>Z-A</option>
+										<option value="a-z" @if($sort=='a-z') selected @endif>Tên sản phẩm A-Z</option>
+										<option value="z-a" @if($sort=='z-a') selected @endif>Tên sản phẩm Z-A</option>
 	                                </select>
 	                            </label>
 	                            <div class="product__group">
@@ -67,42 +67,46 @@
 		                                @endforeach
 	                                @else
 	                                	<div class="product breadcrumb-box" style="padding: 50px;width: 100%">
-	                                		Sản phẩm đang được cập nhập
+	                                		Sản phẩm đang được cập nhật
 	                                	</div>
 	                                @endif
 	                            </div>
-	                            <nav aria-label="Page navigation example">
-	                                <ul class="pagination justify-content-center">
-	                                    
-	                                    <li class="page-item">
+	                            @if(count($data))
+		                            @if(@$data->lastpage() > 1)
+		                            <nav aria-label="Page navigation example">
+		                                <ul class="pagination justify-content-center">
+		                                    
+		                                    <li class="page-item">
 
-						                    <a class="page-link" href="{{route('home.list.product')}}?page={{$curent_page-1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page==1) onclick="return false;" @endif" aria-label="Previous">
+							                    <a class="page-link" href="{{route('home.list.product')}}?page={{$curent_page-1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page==1) onclick="return false;" @endif" aria-label="Previous">
 
-						                        <span aria-hidden="true">&laquo;</span>
+							                        <span aria-hidden="true">&laquo;</span>
 
-						                    </a>
+							                    </a>
 
-						                </li>
+							                </li>
 
-						                @for($i = 0; $i < $data->lastpage(); $i++)
-	                                    <li class="page-item" data-page="{{$i+1}}">
-	                                    	<a class="page-link" href="{{route('home.list.product')}}?page={{$i+1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page == $i+1) onclick="return false;" @endif">
-	                                    		{{$i+1}}
-	                                    	</a>
-	                                    </li>
-	                                    @endfor
+							                @for($i = 0; $i < $data->lastpage(); $i++)
+		                                    <li class="page-item" data-page="{{$i+1}}">
+		                                    	<a class="page-link" href="{{route('home.list.product')}}?page={{$i+1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page == $i+1) onclick="return false;" @endif">
+		                                    		{{$i+1}}
+		                                    	</a>
+		                                    </li>
+		                                    @endfor
 
-	                                    <li class="page-item">
+		                                    <li class="page-item">
 
-						                    <a class="page-link" aria-label="Next" href="{{route('home.list.product')}}?page={{$curent_page+1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page==$data->lastpage()) onclick="return false;" @endif >
+							                    <a class="page-link" aria-label="Next" href="{{route('home.list.product')}}?page={{$curent_page+1}}@if($sort !='')&sort={{$sort}}@endif" @if($curent_page==$data->lastpage()) onclick="return false;" @endif >
 
-						                        <span aria-hidden="true">&raquo;</span>
+							                        <span aria-hidden="true">&raquo;</span>
 
-						                    </a>
+							                    </a>
 
-						                </li>
-	                                </ul>
-	                            </nav>
+							                </li>
+		                                </ul>
+		                            </nav>
+		                            @endif
+	                            @endif
 	                        </div>
 	                    </div>
 	                </div>

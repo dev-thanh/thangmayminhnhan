@@ -1,6 +1,6 @@
 @extends('backend.layouts.app') 
 
-@section('controller','Thông tin giới thiệu')
+@section('controller','Chính sách quy định')
 
 @section('controller_route', route('policy.list'))
 
@@ -116,7 +116,56 @@
 
 						            </div>
 
+						            <div class="box box-success">
+
+						                <div class="box-header with-border">
+
+						                    <h3 class="box-title">Hình ảnh banner</h3>
+
+						                </div>
+
+						                <div class="box-body">
+
+						                    <div class="form-group" style="text-align: center;">
+
+						                        <div class="image">
+
+						                            @if(old('image'))
+						                        	<div class="image__thumbnail">
+						                                <img src="{{ !empty(old('image')) ? old('image') : __IMAGE_DEFAULT__ }}"
+						                                     data-init="{{ __IMAGE_DEFAULT__ }}">
+						                                <a href="javascript:void(0)" class="image__delete" onclick="urlFileDelete(this)">
+						                                    <i class="fa fa-times"></i></a>
+						                                <input type="hidden" value="{{ old('image') }}" name="image"/>
+						                                <div class="image__button" onclick="fileSelect(this)">
+						                                	<i class="fa fa-upload"></i>
+						                                    Upload
+						                                </div>
+						                            </div>
+						                        	@else
+						                            <div class="image__thumbnail">
+						                                <img src="{{ !empty(@$data->image) ? @$data->image : __IMAGE_DEFAULT__ }}"
+						                                     data-init="{{ __IMAGE_DEFAULT__ }}">
+						                                <a href="javascript:void(0)" class="image__delete" onclick="urlFileDelete(this)">
+						                                    <i class="fa fa-times"></i></a>
+						                                <input type="hidden" value="{{ old('image', @$data->image) }}" name="image"/>
+						                                <div class="image__button" onclick="fileSelect(this)">
+						                                	<i class="fa fa-upload"></i>
+						                                    Upload
+						                                </div>
+						                            </div>
+						                            @endif
+
+						                        </div>
+
+						                    </div>
+
+						                </div>
+
+						            </div>
+
 								</div>
+
 			            	</form>
 
 

@@ -78,7 +78,7 @@
 									<div class="form-group">
 										<label for="">Mô tả trang</label>
 										<textarea name="meta_description" 
-										class="form-control content" rows="5">{!! @$data->meta_description !!}</textarea>
+										class="form-control" rows="5">{!! @$data->meta_description !!}</textarea>
 									</div>
 									<div class="form-group">
 										<label for="">Từ khóa</label>

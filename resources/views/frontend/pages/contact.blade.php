@@ -56,8 +56,8 @@
 	                                        <span class="color--red fr-error" id="error_phone"></span>
 	                                    </div>
 	                                   <div class="form-group">
-	                                        <input type="text" class="form-control" placeholder="Tiêu đề" name="title" />
-	                                        <span class="color--red fr-error" id="error_title"></span>
+	                                        <input type="text" class="form-control" placeholder="Email" name="email" />
+	                                        <span class="color--red fr-error" id="error_email"></span>
 	                                    </div>
 	                                    <div class="form-group">
 	                                        <textarea class="form-control" placeholder="Nội dung" name="content"></textarea>
@@ -67,7 +67,7 @@
 	                                </form>
 	                            </div>
 	                            <div class="col-12 col-md-7">
-	                                {!! @$content->code_google_map !!}
+	                                {!! @$site_info->google_maps !!}
 	                            </div>
 	                        </div>
 	                    </div>

@@ -26,7 +26,6 @@ use App\Models\Contact;
 use App\Models\Posts;
 use App\Models\Categories;
 use App\Models\ProductCategory;
-use App\Models\PostCategory;
 use App\Models\Accessories;
 use App\Models\AccessoriesCategory;
 use App\Models\Customer;
@@ -178,11 +177,9 @@ class IndexController extends Controller
         $array_cate = $data->category()->get()->pluck('id')->toArray();
         
 
-        $post_same_category = PostCategory::select('posts.*')
-        ->whereIn('post_category.id_category',$array_cate)
-        ->join('posts','posts.id','=','post_category.id_post')
-        ->where('posts.id','!=',$data->id)
-        ->get()->take(5);
+        $post_same_category = Posts::where([
+            'status' => 1
+        ])->orderBy('created_at', 'DESC')->get()->take(8);
 
         $post_new = Posts::where([
             'status' => 1,
@@ -218,6 +215,12 @@ class IndexController extends Controller
                 $result['message_phone'] = 'Vui lòng nhập đúng định dạng số điện thoại. Ví dụ: 0989888456';
             }
         }
+
+        if($request->email !=''){
+            if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                $result['message_email'] = 'Địa chỉ email không hợp lệ';
+            }
+        }
         
         if (strlen($request->content) > 500) {
             $result['message_content'] = 'Nội dung không lớn hơn 500 ký tự';
@@ -238,8 +241,6 @@ class IndexController extends Controller
 
         $contact = new Contact;
 
-        $contact->title = $request->title;
-
         $contact->customer_id = $customer->id;
 
         $contact->type = $request->type;
@@ -251,7 +252,7 @@ class IndexController extends Controller
         $contact->save();
 
         $content_email = [
-            'title' => $request->title,
+            'email' => $request->email,
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
@@ -286,19 +287,19 @@ class IndexController extends Controller
 
         switch ($sort) {
             case '':
-                $data = $products->orderBy('created_at','DESC')->paginate(12);
+                $data = $products->orderBy('created_at','DESC')->paginate(15);
                 break;
             case 'moi-nhat':
-                $data = $products->orderBy('created_at','DESC')->paginate(12);
+                $data = $products->orderBy('created_at','DESC')->paginate(15);
                 break;
             case 'cu-nhat':
-                $data = $products->orderBy('created_at','ASC')->paginate(12);
+                $data = $products->orderBy('created_at','ASC')->paginate(15);
                 break;
             case 'a-z':
-                $data = $products->orderBy('name','ASC')->paginate(12);
+                $data = $products->orderBy('name','ASC')->paginate(15);
                 break;
             case 'z-a':
-                $data = $products->orderBy('name','DESC')->paginate(12);
+                $data = $products->orderBy('name','DESC')->paginate(15);
                 break;
         }
 
@@ -308,6 +309,12 @@ class IndexController extends Controller
     public function categoryProducts(Request $request, $slug){
         
         $cate = Categories::where('slug',$slug)->first();
+
+        if(!isset($cate)){
+            return abort(404);
+        }
+
+        $dataSeo = Pages::where('type', 'products')->first();
 
         $this->createSeoPost($cate);
 
@@ -324,34 +331,34 @@ class IndexController extends Controller
             case '':
                 $data =$products
                 ->orderBy('created_at','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'moi-nhat':
                 $data =$products
                 ->orderBy('created_at','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'cu-nhat':
                 $data =$products
                 ->orderBy('created_at','ASC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'a-z':
                 $data =$products
                 ->orderBy('name','ASC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'z-a':
                 $data =$products
                 ->orderBy('name','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
         }
 
         if($sort !='' || $page !=''){
             return view('frontend.pages.cate-products',compact('data','cate','slug','cateProducts'))->with('scroll','breadcrumb-box');
         }
-        return view('frontend.pages.cate-products',compact('data','cate','slug','cateProducts'));
+        return view('frontend.pages.cate-products',compact('data','cate','slug','cateProducts','dataSeo'));
     }
 
     public function getSingleProduct($slug){
@@ -375,7 +382,7 @@ class IndexController extends Controller
 
         $list_post_related     = ProductCategory::whereIn('id_category', $list_category)->get()->pluck('id_product')->toArray();
 
-        $product_same_category = Products::where('id', '!=', $data->id)->where('status', 1)->whereIn('id', $list_post_related)->orderBy('created_at', 'DESC')->take(12)->get();
+        $product_same_category = Products::where('id', '!=', $data->id)->where('status', 1)->whereIn('id', $list_post_related)->orderBy('created_at', 'DESC')->take(15)->get();
 
         return view('frontend.pages.single-product', compact('data', 'dataSeo', 'product_same_category','cateProducts','list_category'));
     }
@@ -394,19 +401,19 @@ class IndexController extends Controller
 
         switch ($sort) {
             case '':
-                $data = $accessories->orderBy('created_at','DESC')->paginate(12);
+                $data = $accessories->orderBy('created_at','DESC')->paginate(15);
                 break;
             case 'moi-nhat':
-                $data = $accessories->orderBy('created_at','DESC')->paginate(12);
+                $data = $accessories->orderBy('created_at','DESC')->paginate(15);
                 break;
             case 'cu-nhat':
-                $data = $accessories->orderBy('created_at','ASC')->paginate(12);
+                $data = $accessories->orderBy('created_at','ASC')->paginate(15);
                 break;
             case 'a-z':
-                $data = $accessories->orderBy('name','ASC')->paginate(12);
+                $data = $accessories->orderBy('name','ASC')->paginate(15);
                 break;
             case 'z-a':
-                $data = $accessories->orderBy('name','DESC')->paginate(12);
+                $data = $accessories->orderBy('name','DESC')->paginate(15);
                 break;
         }
 
@@ -417,7 +424,13 @@ class IndexController extends Controller
         
         $cate = Categories::where('slug',$slug)->first();
 
+        if(!isset($cate)){
+            return abort(404);
+        }
+
         $this->createSeoPost($cate);
+
+        $dataSeo = Pages::where('type', 'products')->first();
 
         $cateAccessories = Categories::where('type','category_accessories')->get();
 
@@ -432,34 +445,34 @@ class IndexController extends Controller
             case '':
                 $data =$accessories
                 ->orderBy('created_at','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'moi-nhat':
                 $data =$accessories
                 ->orderBy('created_at','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'cu-nhat':
                 $data =$accessories
                 ->orderBy('created_at','ASC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'a-z':
                 $data =$accessories
                 ->orderBy('name','ASC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
             case 'z-a':
                 $data =$accessories
                 ->orderBy('name','DESC')
-                ->paginate(12);
+                ->paginate(15);
                 break;
         }
 
         if($sort !='' || $page !=''){
             return view('frontend.pages.cate-accessories',compact('data','cate','slug','cateAccessories'))->with('scroll','breadcrumb-box');
         }
-        return view('frontend.pages.cate-accessories',compact('data','cate','slug','cateAccessories'));
+        return view('frontend.pages.cate-accessories',compact('data','cate','slug','cateAccessories','dataSeo'));
     }
 
     public function getSingleAccessories($slug){
@@ -482,7 +495,7 @@ class IndexController extends Controller
 
         $list_post_related     = AccessoriesCategory::whereIn('id_category', $list_category)->get()->pluck('id_accessories')->toArray();
 
-        $accessories_same_category = Accessories::where('id', '!=', $data->id)->where('status', 1)->whereIn('id', $list_post_related)->orderBy('created_at', 'DESC')->take(12)->get();
+        $accessories_same_category = Accessories::where('id', '!=', $data->id)->where('status', 1)->whereIn('id', $list_post_related)->orderBy('created_at', 'DESC')->take(15)->get();
 
         return view('frontend.pages.single-accessories', compact('data', 'dataSeo', 'accessories_same_category','cateAccessories','list_category'));
     }

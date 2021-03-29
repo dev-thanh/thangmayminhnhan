@@ -91,40 +91,10 @@
     </a>
 </li>
 
-<li class="treeview {{ Request::segment(2) === 'category-post' || Request::segment(2) === 'posts' ? 'active' : null }}">
-
-    <a href="#">
-
-        <i class="fa fa-tags" aria-hidden="true"></i> <span>Tin tức</span>
-
-        <span class="pull-right-container">
-
-        <i class="fa fa-angle-left pull-right"></i>
-
-        </span>
-
+<li class="{{ Request::segment(2) == 'posts' ? 'active' : null  }}">
+    <a href="{{ route('posts.index') }}?type=blog">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i> <span>Tin tức</span>
     </a>
-
-    <ul class="treeview-menu">
-
-
-
-        <li class="{{ Request::segment(2) === 'posts' ? 'active' : null }}">
-
-            <a href="{{ route('posts.index') }}?type=blog"><i class="fa fa-circle-o"></i> Danh sách Tin tức</a>
-
-        </li>
-
-
-
-        <li class="{{ Request::segment(2) === 'category-post' ? 'active' : null }}">
-
-            <a href="{{ route('category-post.index') }}"><i class="fa fa-circle-o"></i> Danh mục tin tức</a>
-
-        </li>
-
-    </ul>
-
 </li>
 
 <li class="{{ Request::segment(2) == 'pages' ? 'active' : null  }}">

@@ -118,14 +118,6 @@
 
 		                    			<div class="form-group">
 
-		                    				<label for="">Mô tả ngắn sản phẩm</label>
-
-		                    				<textarea class="form-control" rows="5" name="sort_desc">{{ old('sort_desc', @$data->sort_desc) }}</textarea>
-
-		                    			</div>
-
-		                    			<div class="form-group">
-
 		                    				<label for="">Chi tiết sản phẩm</label>
 
 		                    				<textarea class="content" name="content">{!! old('content', @$data->content) !!}</textarea>
@@ -234,7 +226,7 @@
 
 				                        <div class="google__url">
 
-				                            {{ asset( 'san-pham/'.$data->slug.'-'.$data->id ) }}
+				                            {{ asset( 'san-pham/'.$data->slug ) }}
 
 				                        </div>
 

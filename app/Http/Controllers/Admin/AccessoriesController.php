@@ -30,6 +30,10 @@ class AccessoriesController extends Controller
                     'title' => 'Tên linh kiện', 
                     'with' => '',
                 ],
+                'category' => [
+                    'title' => 'Danh mục linh kiện', 
+                    'with' => '',
+                ],
                
                 'status' => [
                     'title' => 'Trạng thái', 
@@ -81,6 +85,20 @@ class AccessoriesController extends Controller
                         <i class="fa fa-hand-o-right" aria-hidden="true"></i> Link: 
                         ' . route('home.single.product', $data->slug) . '
                       </a>';
+                })->addColumn('category', function ($data) {
+                    $label = null;
+
+                    if(count($data->category)){
+
+                        foreach ($data->category as $item) {
+
+                            $label = $label. '<span class="label label-success">'.$item->name.'</span><br>';
+
+                        }
+
+                    }
+
+                    return $label;
                 })->addColumn('status', function ($data) {
                     if ($data->status == 1) {
                         $status = ' <span class="label label-success">Hiển thị</span>';
@@ -97,7 +115,7 @@ class AccessoriesController extends Controller
                             data-toggle="modal" data-target="#confim">
                             <i class="fa fa-trash-o fa-fw"></i> Xóa</a>
                         ';
-                })->rawColumns(['checkbox', 'image', 'status', 'action', 'slug', 'name', 'price'])
+                })->rawColumns(['checkbox', 'image', 'status', 'action', 'slug', 'name','category', 'price'])
                 ->addIndexColumn()
                 ->make(true);
         }

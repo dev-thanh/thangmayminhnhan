@@ -30,6 +30,10 @@ class ProductsController extends Controller
                     'title' => 'Tên sản phẩm', 
                     'with' => '',
                 ],
+                'category' => [
+                    'title' => 'Danh mục sản phẩm', 
+                    'with' => '',
+                ],
                
                 'status' => [
                     'title' => 'Trạng thái', 
@@ -88,6 +92,20 @@ class ProductsController extends Controller
                         $status = ' <span class="label label-danger">Không hiển thị</span>';
                     }
                     return $status;
+                })->addColumn('category', function ($data) {
+                    $label = null;
+
+                    if(count($data->category)){
+
+                        foreach ($data->category as $item) {
+
+                            $label = $label. '<span class="label label-success">'.$item->name.'</span><br>';
+
+                        }
+
+                    }
+
+                    return $label;
                 })->addColumn('action', function ($data) {
                     return '<a href="' . route('products.edit', ['id' => $data->id ]) . '" title="Sửa">
                             <i class="fa fa-pencil fa-fw"></i> Sửa
@@ -97,7 +115,7 @@ class ProductsController extends Controller
                             data-toggle="modal" data-target="#confim">
                             <i class="fa fa-trash-o fa-fw"></i> Xóa</a>
                         ';
-                })->rawColumns(['checkbox', 'image', 'status', 'action', 'slug', 'name', 'price'])
+                })->rawColumns(['checkbox', 'image','category', 'status', 'action', 'slug', 'name', 'price'])
                 ->addIndexColumn()
                 ->make(true);
         }

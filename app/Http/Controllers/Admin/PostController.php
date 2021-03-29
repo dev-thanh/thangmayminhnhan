@@ -43,7 +43,6 @@ class PostController extends Controller
         return [
             'name' => 'required',
             'image' => 'required',
-            'category' => "required",
         ];
     }
 
@@ -86,7 +85,12 @@ class PostController extends Controller
                     }else{
                         $show_home = '';
                     }
-                    return $status.$show_home;
+                    if ($data->is_new == 1) {
+                        $is_new = '<br><span class="label label-success">Tin tức mới nhất</span>';
+                    }else{
+                        $is_new = '';
+                    }
+                    return $status.$show_home.$is_new;
                 })->addColumn('action', function ($data) {
                     return '<a href="' . route('posts.edit', ['id' => $data->id ]) . '" title="Sửa">
                             <i class="fa fa-pencil fa-fw"></i> Sửa
@@ -143,13 +147,6 @@ class PostController extends Controller
 
         $product = Posts::create($input);
 
-
-        if(!empty($request->category)){
-            foreach ($request->category as $item) {
-                PostCategory::create(['id_category'=> $item, 'id_post'=> $product->id]);
-            }
-        }
-
         flash('Thêm mới thành công.')->success();
 
         return redirect()->route($this->module()['module'].'.edit', $product);
@@ -168,7 +165,6 @@ class PostController extends Controller
         $data['module'] = array_merge($this->module(),[
             'action' => 'update'
         ]);
-        $data['categories'] = Categories::where('type','post_category')->get();
 
         $data['data'] = Posts::findOrFail($id);
 
@@ -200,13 +196,6 @@ class PostController extends Controller
         $input['more_image'] = !empty($request->gallery) ? json_encode($request->gallery) : null;
 
         $product = Posts::find($id)->update($input);
-
-        if(!empty($request->category)){
-             PostCategory::where('id_post', $id)->delete();
-            foreach ($request->category as $item) {
-                PostCategory::create(['id_category'=> $item, 'id_post'=> $id]);
-            }
-        }
 
         flash('Cập nhật tin tức thành công.')->success();
         return back()->with('active_tab', $request->active_tab);

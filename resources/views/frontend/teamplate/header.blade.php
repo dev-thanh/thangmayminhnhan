@@ -16,7 +16,7 @@
                     </a>
                 @endif
                 @if(!empty(@$site_info->hot_line_header))
-                    <a href="tell:{{@$site_info->hot_line_header}}" class="header__link">
+                    <a href="tel:{{@$site_info->hot_line_header}}" class="header__link">
                     <span class="link__icon">
                     <i class="fas fa-phone"></i>
                     </span>

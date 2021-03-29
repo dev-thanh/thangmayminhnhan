@@ -6,7 +6,14 @@
 	} ?>
 
 	<main id="main" class=" ">
-	    <section class="page__category">
+		@if(!empty(@$data->image))
+	    <section class="section__banner">
+	        <div class="frame cus__frame">
+	            <img class="frame--image" src="{{url('/')}}/{{@$data->image}}" alt="{{$data->name}}" />
+	        </div>
+	    </section>
+	    @endif
+	    <section class="page__category page_policy">
 	        <div class="container">
 	            <div class="module module-page__categroy">
 	                <div class="module__content">

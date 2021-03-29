@@ -38,10 +38,6 @@
 				            <li class="">
 				            	<a href="#content" data-toggle="tab" aria-expanded="true">Khối top</a>
 				            </li>
-				            <li class="">
-				            	<a href="#content2" data-toggle="tab" aria-expanded="true">Khối google map</a>
-				            </li>
-				            
 				        </ul>
 				    </div>
 				    <?php if(!empty($data->content)){
@@ -152,20 +148,6 @@
 								            </button>
 						                </div>
 						            </div>
-								</div>
-							</div>
-						</div>
-
-						<div class="tab-pane" id="content2">
-							<div class="row">
-								<div class="col-sm-12">
-									
-									<div class="repeater" id="repeater">
-										<div class="form-group">
-											<label for="">Code Google Maps</label>
-											<textarea name="content[code_google_map]" class="form-control" rows="5">{!! @$content->code_google_map !!}</textarea>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

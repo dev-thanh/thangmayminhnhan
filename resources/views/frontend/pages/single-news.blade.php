@@ -31,7 +31,7 @@
 	                    <div class="col-12 col-lg-3">
 	                        <div class="module__content">
 	                            <div class="sideba">
-	                                <h2 class="title pl-0">Tin tưc mới nhất</h2>
+	                                <h2 class="title pl-0">Tin tức mới nhất</h2>
 	                                <ul>
 	                                	@foreach($post_new as $item)
 	                                    <li class="sideba__item @if($item->id == $data->id) active @endif">
@@ -48,7 +48,7 @@
 	                </div>
 	                @if(count($post_same_category))
 	                <div class="detailRe">
-	                    <h3 class="title color--red pl-0">Tin tức liên Quan</h3>
+	                    <h3 class="title color--red pl-0">Tin tức liên quan</h3>
 	                    <div class="detailRe__content">
 	                        <div class="module">
 	                            <div class="module__content">
@@ -68,7 +68,7 @@
 	                                            <div class="new__content">
 	                                                <h3 class="new__title">{{$item->name}}</h3>
 	                                                <div class="new__desc">
-	                                                    {!! $item->desc !!}
+	                                                    {!! $item->sort_desc !!}
 	                                                </div>
 	                                                <a href="{{route('home.news-single',['slug'=>$item->slug])}}" class="btn btn--view" title="Xem thêm">
 	                                                Xem thêm

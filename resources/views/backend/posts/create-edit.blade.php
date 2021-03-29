@@ -150,7 +150,7 @@
 
 				                        <div class="google__url">
 
-				                            {{ asset( 'tin-tuc/'.$data->slug.'-'.$data->id ) }}
+				                            {{ asset( 'tin-tuc/'.$data->slug) }}
 
 				                        </div>
 
@@ -231,52 +231,6 @@
 		                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu lại tin tức</button>
 
 		                    </div>
-
-		                </div>
-
-		            </div>
-
-		            <div class="box box-success category-box">
-
-		                <div class="box-header with-border">
-
-		                    <h3 class="box-title">Danh mục tin tức </h3>
-
-		                </div>
-
-		                <div class="box-body checkboxlist">
-
-		                	<?php 
-
-		                        $category_list = [];
-
-		                        if(!empty(@$data->category)){
-
-		                           $category_list = @$data->category->pluck('id')->toArray();
-
-		                        }
-
-		                    ?>
-
-		                    @if (!empty($categories))
-
-		                        @foreach ($categories as $item)
-
-		                            @if ($item->parent_id == 0)
-
-		                                <label class="custom-checkbox">
-
-		                                    <input type="checkbox" class="category" name="category[]" value="{{ $item->id }}" {{ in_array( $item->id, $category_list ) ? 'checked' : null }}> {{ $item->name }}
-
-		                                 </label>
-
-		                                 <?php checkBoxCategory( $categories, $item->id, $item, $category_list ) ?>
-
-		                            @endif
-
-		                        @endforeach
-
-		                    @endif
 
 		                </div>
 

@@ -60,8 +60,9 @@
 			                            </div>
 			                          
 		                                <div class="form-group" style="">
-		                                    <label>Địa chỉ</label>                           
-		                                    <textarea class="form-control" name="address" id="phone" readonly="">{{ isset($data) ? $data->customer->address : null }}</textarea>
+		                                    <label>Email</label>                           
+		                                    <input type="text" class="form-control" name="email" id="email"
+			                                       value="{!! old('email', isset($data) ? $data->customer->email : null) !!}" readonly>
 		                                </div>
 			                           
 			                            <div class="form-group">

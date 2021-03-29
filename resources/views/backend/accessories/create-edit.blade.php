@@ -98,8 +98,6 @@
 
 				                    	</div>
 
-										
-
 										@if(isUpdate(@$module['action']))
 
 			                                <div class="form-group" id="edit-slug-box">
@@ -110,19 +108,9 @@
 
 		                                @endif
 
-
-
 		                    		</div>
 
 		                    		<div class="col-sm-12">
-
-		                    			<div class="form-group">
-
-		                    				<label for="">Mô tả ngắn linh kiện</label>
-
-		                    				<textarea class="form-control" rows="5" name="sort_desc">{{ old('sort_desc', @$data->sort_desc) }}</textarea>
-
-		                    			</div>
 
 		                    			<div class="form-group">
 
@@ -234,7 +222,7 @@
 
 				                        <div class="google__url">
 
-				                            {{ asset( 'san-pham/'.$data->slug.'-'.$data->id ) }}
+				                            {{ asset( 'san-pham/'.$data->slug ) }}
 
 				                        </div>
 

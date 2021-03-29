@@ -1,6 +1,6 @@
 @extends('backend.layouts.app') 
 
-@section('controller','Thông tin giới thiệu')
+@section('controller','Chính sách quy định')
 
 @section('controller_route', route('policy.list'))
 

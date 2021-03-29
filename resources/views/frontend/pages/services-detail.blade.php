@@ -22,7 +22,7 @@
 	                <div class="module__content">
 	                    <div class="service">
 	                        <div class="service__desc">
-	                            {!! @$data->desc !!}
+	                            {!! @$data->content_detail !!}
 	                        </div>
 	                        <div class="service__container">
 	                        	@foreach($content->process as $item)
@@ -35,6 +35,9 @@
 	                                </div>
 	                            </div>
 	                            @endforeach
+	                            <div class="contact">
+				                    {!! $data->content_footer !!}
+				                </div>
 	                        </div>
 	                    </div>
 	                </div>

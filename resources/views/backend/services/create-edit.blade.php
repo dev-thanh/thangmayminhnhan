@@ -50,8 +50,22 @@
 
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="">Mô tả dịch vụ</label>
-                                            <textarea class="content" name="desc">{!! old('desc', @$data->desc) !!}</textarea>
+                                            <label for="">Mô tả ngắn dịch vụ</label>
+                                            <textarea class="form-control" name="desc">{!! old('desc', @$data->desc) !!}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Chi tiết dịch vụ</label>
+                                            <textarea class="content" name="content_detail">{!! old('content_detail', @$data->content_detail) !!}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Nội dung cuối trang</label>
+                                            <textarea class="content" name="content_footer">{!! old('content_footer', @$data->content_footer) !!}</textarea>
                                         </div>
                                     </div>
                                     
@@ -165,7 +179,7 @@
 				                    <div class="google-preview">
 				                        <span class="google__title"><span>{!! !empty($data->meta_title) ? $data->meta_title : @$data->name !!}</span></span>
 				                        <div class="google__url">
-				                            {{ asset( 'products/'.$data->slug ) }}
+				                            {{ asset( 'dich-vu/'.$data->slug ) }}
 				                        </div>
 				                        <div class="google__description">{!! old('meta_description', isset($data->meta_description) ? @$data->meta_description : '') !!}</div>
 				                    </div>

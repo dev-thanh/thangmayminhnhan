@@ -21,7 +21,7 @@
             <label for="">Tiêu đề</label>
             <input type="text" name="content[services][content][{{ $key }}][title]" class="form-control" value="{{ @$value->title }}">
             <label for="">Mô tả</label>
-            <textarea name="content[services][content][{{ $key }}][desc]" class="form-control content" style="min-height: 120px">{{ @$value->desc }}</textarea>
+            <textarea id="content{{ $key }}" name="content[services][content][{{ $key }}][desc]" class="form-control" style="min-height: 120px">{{ @$value->desc }}</textarea>
         </div>
     </td>
     <td style="text-align: center;">
@@ -30,3 +30,6 @@
         </a>
     </td>
 </tr>
+<script>
+    CKEDITOR.replace( 'content{{ $key }}' );
+</script>

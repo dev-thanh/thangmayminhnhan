@@ -93,9 +93,7 @@
 					                <table class="table table-bordered table-hover">
 					                    <thead>
 						                    <tr>
-						                    	<th style="width: 30px;">STT</th>
-						                    	<th style="width: 200px">Hình ảnh</th>
-						                    	<th>Nội dung</th>
+						                    	<th>Hình ảnh banner</th>
 						                    </tr>
 					                	</thead>
 					                    <tbody id="sortable">
@@ -104,7 +102,6 @@
 					                    	} ?>
 					                    	@for ($i = 1; $i <= 1; $i++)
 												<tr>
-													<td class="index">{{ $i }}</td>
 													<td>
 							                           <div class="image">
 							                               <div class="image__thumbnail">
@@ -116,16 +113,6 @@
 							                                   <div class="image__button" onclick="fileSelect(this)"><i class="fa fa-upload"></i> Upload</div>
 							                               </div>
 							                           </div>
-													</td>
-													<td>
-														<div class="form-group">
-															<label for="">Tiêu đề banner</label>
-															<input type="text" class="form-control" name="meta_orthers[title]" value="{{ @$meta_orthers->title }}">
-														</div>
-														<div class="form-group">
-															<label for="">Liên kết</label>
-															<input type="text" class="form-control" name="meta_orthers[link]" value="{{ @$meta_orthers->link }}">
-														</div>
 													</td>
 												</tr>
 											@endfor
