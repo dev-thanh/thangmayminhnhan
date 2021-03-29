@@ -21,7 +21,7 @@
 				            <th width="10px">STT</th>
 				            <th>Họ tên</th>
 				            <th>Số điện thoại</th>
-				            <th>Tiêu đề</th>
+				            <th>Email</th>
 				            <th>Thời gian gửi</th>
 				            <th width="90px">Trạng thái</th>
 				            <th width="100px">Thao tác</th>
@@ -48,7 +48,7 @@
                     { data: 'DT_RowIndex',name: 'DT_RowIndex'},
                     { data: 'name', name: 'name' },
                     { data: 'phone', name: 'phone' },
-                    { data: 'title', name: 'title' },
+                    { data: 'email', name: 'email' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'status', name: 'status' },
                     { data: 'action', name: 'action' },

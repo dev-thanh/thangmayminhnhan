@@ -2,15 +2,16 @@
 	$curent_page = request()->get('page') ? request()->get('page') : '1';
 	$curent_page = request()->get('page') ? request()->get('page') : '1';
 	$sort = request()->get('sort') ? request()->get('sort') : '';
+	$banner = json_decode($cate->meta_banner)->image;
  ?>
 @extends('frontend.master')
 @section('main')
 	
 	<main id="main">
-	    @if(!empty($dataSeo->banner) || !empty(@$cate->meta_banner))
+	    @if(!empty($dataSeo->banner) || !empty(@$banner))
 	    <section class="section__banner">
 	        <div class="frame cus__frame">
-	            <img class="frame--image" src="@if(!empty(@$cate->meta_banner)) {{url('/')}}/{{json_decode($cate->meta_banner)->image}} @else {{url('/')}}/{{@$dataSeo->banner}} @endif" alt="{{@$dataSeo->title}}" />
+	            <img class="frame--image" src="@if(!empty(@$banner)) {{url('/')}}/{{@$banner}} @else {{url('/')}}/{{@$dataSeo->banner}} @endif" alt="{{@$dataSeo->title}}" />
 	        </div>
 	        @if(!empty($cate->name))
 	        <div class="container">

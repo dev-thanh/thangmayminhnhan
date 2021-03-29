@@ -210,7 +210,8 @@ class AccessoriesController extends Controller
 
     
         $fields = $this->fields();
-        $fields['sku'] = 'required|unique:products,sku,'.$id;
+        
+        $fields['sku'] = 'required|unique:accessories,sku,'.$id;
 
         $this->validate($request, $fields, $this->messages());
 

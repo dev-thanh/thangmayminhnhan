@@ -268,20 +268,6 @@
 
 		                        </label>
 
-		                        <label class="custom-checkbox">
-
-									@if(isUpdate(@$module['action']))
-
-		                            	<input type="checkbox" name="show_home" value="1" {{ @$data->show_home == 1 ? 'checked' : null }}> Hiển thị trang chủ
-
-		                            @else
-
-		                            	<input type="checkbox" name="show_home" value="1"> Hiển thị trang chủ
-
-		                            @endif
-
-		                        </label>
-
 		                    </div>
 
 		                    <div class="form-group text-right">

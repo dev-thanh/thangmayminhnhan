@@ -22,8 +22,8 @@ class ContactController extends Controller
                     return $data->Customer->name;
                 })->addColumn('phone', function ($data) {
                     return $data->Customer->phone;
-                })->addColumn('type', function ($data) {
-                    return 'Liên hệ từ khách hàng';
+                })->addColumn('email', function ($data) {
+                    return $data->Customer->email;
                 })->addColumn('status', function ($data) {
                     if ($data->status == 1) {
                         $status = ' <span class="label label-success">Đã xem</span>';
@@ -39,7 +39,7 @@ class ContactController extends Controller
                             data-href="' . route('contact.destroy', $data->id) . '"
                             data-toggle="modal" data-target="#confim">
                             <i class="fa fa-trash-o fa-fw"></i> Xóa</a>';
-                })->rawColumns(['checkbox', 'type', 'phone', 'name', 'status', 'action', 'name'])
+                })->rawColumns(['checkbox', 'type', 'phone', 'name', 'status', 'action', 'email'])
                 ->addIndexColumn()
                 ->make(true);
         }

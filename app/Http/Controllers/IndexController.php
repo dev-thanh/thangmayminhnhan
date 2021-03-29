@@ -210,10 +210,6 @@ class IndexController extends Controller
         
         if ($request->phone == '' || $request->phone == null) {
             $result['message_phone'] = 'Bạn chưa nhập số điện thoại';
-        } else {
-            if (!is_numeric($request->phone) || strlen($request->phone) != 10) {
-                $result['message_phone'] = 'Vui lòng nhập đúng định dạng số điện thoại. Ví dụ: 0989888456';
-            }
         }
 
         if($request->email !=''){
