@@ -159,6 +159,10 @@
 			               		<div class="row">
 			               			<div class="col-sm-12">
 			               				<div class="form-group">
+				               				<label for="">Tên công ty</label>
+				               				<input type="text" class="form-control" name="content[company_name]" value="{{ @$content->company_name }}">
+										</div>
+			               				<div class="form-group">
 				               				<label for="">Email nhận thông tin liên hệ</label>
 				               				<input type="email" class="form-control" name="content[email_admin]" value="{{ @$content->email_admin }}">
 										</div>

@@ -4,8 +4,7 @@
             <div class="col-12 col-sm-6 col-md-4">
                 <div class="footer__content">
                     <h3 class="footer__title border__bottom--none cus-pm">
-                        CÔNG TY TNHH <br />
-                        THANG MÁY MINH NHÂN
+                        {{@$site_info->company_name}}
                     </h3>
                     <ul class="list">
                         @if (!empty($site_info->address->list))

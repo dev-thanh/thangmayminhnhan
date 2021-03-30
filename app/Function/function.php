@@ -195,7 +195,7 @@ function listCateAccessories($data, $parent_id = 0, $str = '')
 
 
 
-            listCate($data, $id, $str . '---| ');
+            listCateAccessories($data, $id, $str . '---| ');
 
         }
 

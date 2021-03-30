@@ -91,7 +91,12 @@ class ProductsController extends Controller
                     } else {
                         $status = ' <span class="label label-danger">Không hiển thị</span>';
                     }
-                    return $status;
+                    if ($data->show_home == 1) {
+                        $show_home = '<br><span class="label label-success">Hiển thị trang chủ</span>';
+                    } else {
+                        $show_home = '';
+                    }
+                    return $status.$show_home;
                 })->addColumn('category', function ($data) {
                     $label = null;
 
