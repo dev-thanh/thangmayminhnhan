@@ -158,7 +158,7 @@ class CategoryController extends Controller
 
         if(count($category)){
 
-            flash('Xóa thành công.')->error();
+            flash('Không thể xóa danh mục có chứa danh mục con.')->error();
 
             return redirect()->route('category.index');
 

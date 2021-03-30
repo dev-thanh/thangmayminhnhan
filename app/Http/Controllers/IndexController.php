@@ -426,7 +426,7 @@ class IndexController extends Controller
 
         $this->createSeoPost($cate);
 
-        $dataSeo = Pages::where('type', 'products')->first();
+        $dataSeo = Pages::where('type', 'accessories')->first();
 
         $cateAccessories = Categories::where('type','category_accessories')->get();
 
